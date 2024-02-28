@@ -1,7 +1,6 @@
 from flask import Flask
 from flask import jsonify
 from flask import make_response
-from flask import session
 from flasgger import Swagger
 import logging
 import sys
@@ -41,13 +40,13 @@ TEMPLATE = {
             "TestResponse": {
                 "type": "object",
                 "properties": {
-                    "message":{
+                    "message": {
                         "type": "string",
                         "description": "static message"
                     },
                     "timestamp": {
-                    "type": "integer",
-                    "description": "timestamp in epoch time, seconds since 1970-01-01 00:00:00 UTC"
+                        "type": "integer",
+                        "description": "timestamp in epoch time, seconds since 1970-01-01 00:00:00 UTC"
                     }
                 }
             }
@@ -60,6 +59,7 @@ TEMPLATE = {
         },
     ]
 }
+
 
 @app.route('/healthz')
 def healthz():
@@ -116,7 +116,6 @@ def test():
     test_resp = {"message": "Automate all the things!", "timestamp": epoch_time}
     resp = make_response(jsonify(test_resp), 200,)
     return resp
-
 
 
 swag = Swagger(app, template=TEMPLATE)
