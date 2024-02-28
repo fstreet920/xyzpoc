@@ -1,2 +1,5 @@
 src/__pycache__/
+.coverage
+htmlcov/
+src/test/__pycache__/
 *.pyc
