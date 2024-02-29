@@ -21,7 +21,7 @@ spec:
         imagePullPolicy: Always
         name: xyzpoc
         env:
-        - name: LISTENING_PORT
+        - name: XYZPOC_PORT
           value: "{{ .Values.containerPort }}"
         - name: LOGLEVEL
           value: "{{ .Values.appLogLevel }}"
@@ -37,13 +37,13 @@ spec:
           httpGet:
             path: /healthz
             port: {{ .Values.containerPort }}
-          initialDelaySeconds: 5
+          initialDelaySeconds: 15
           periodSeconds: 5
         livenessProbe:
           httpGet:
             path: /healthz
             port: {{ .Values.containerPort }}
-          initialDelaySeconds: 5
+          initialDelaySeconds: 15
           periodSeconds: 5
         resources: {}
       imagePullSecrets:

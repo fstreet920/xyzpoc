@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 # env variables
 logLevel = os.environ.get('LOGLEVEL', 'INFO').upper()
-listeningPort = os.environ.get('LISTENING_PORT', '5000')
+listeningPort = os.environ.get('XYZPOC_PORT', '5000')
 
 # setup logging
 logging.basicConfig(stream=sys.stdout, level=logLevel)
