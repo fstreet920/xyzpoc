@@ -1,0 +1,5 @@
+defaultNameSpace: "xyzpoc"
+replicaCount: 1
+containerPort: 5010
+appLogLevel: "DEBUG"
+image: docker.io/streetplaya/xyzpoc:main-latest
