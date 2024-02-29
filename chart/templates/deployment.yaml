@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: xyzpoc
+  name: xyzpoc
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: xyzpoc
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: xyzpoc
+    spec:
+      containers:
+      - image: {{ .Values.image }}
+        imagePullPolicy: Always
+        name: xyzpoc
+        env:
+        - name: LISTENING_PORT
+          value: "{{ .Values.containerPort }}"
+        - name: LOGLEVEL
+          value: "{{ .Values.appLogLevel }}"
+        ports:
+        - containerPort: {{ .Values.containerPort }}
+        startupProbe:
+          httpGet:
+            path: /healthz
+            port: {{ .Values.containerPort }}
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: {{ .Values.containerPort }}
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: {{ .Values.containerPort }}
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        resources: {}
+      imagePullSecrets:
+      - name: docker-pull-cred  

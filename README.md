@@ -16,6 +16,8 @@ docker build . -f ./docker/Dockerfile -t streetplaya/xyzpoc:0.0.1
 docker run -p 5000:5000 streetplaya/xyzpoc:0.0.1
 docker push streetplaya/xyzpoc:0.0.1
 
+helm template ./chart -n xyzpoc
+
 ### swagger:
 http://127.0.0.1:5000/apidocs
 
