@@ -31,4 +31,9 @@ http://127.0.0.1:5000/apidocs
 
 # Terraform
 based on https://developer.hashicorp.com/terraform/tutorials/kubernetes/eks
+aws eks --region us-west-2 update-kubeconfig --name xyzpoc-eks
+
+# nginx
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace
 

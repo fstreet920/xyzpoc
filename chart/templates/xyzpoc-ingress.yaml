@@ -4,6 +4,7 @@ metadata:
   name: xyzpoc-ingress
   namespace: {{ .Release.Namespace }}
 spec:
+  ingressClassName: nginx
   rules:
   - http:
       paths:
