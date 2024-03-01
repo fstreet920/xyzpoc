@@ -1,6 +1,12 @@
 # xyzpoc
 POC for deploying sample application to the cloud in a Kubernetes environment.
 
+## Prerequisites
+* aws cli installed
+* terraform installed
+* aws user with correct privileges
+* helm installed
+
 # App
 ## terminal testing:
 python3 src/xyzpoc
