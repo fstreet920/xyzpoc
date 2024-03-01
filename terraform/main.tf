@@ -15,6 +15,20 @@ provider "kubernetes" {
   }
 }
 
+# create namespace for xyzpoc
+resource "kubernetes_namespace" "xyzpoc" {
+  metadata {
+    name = var.xyzpoc_namespace
+  }
+}
+
+# create namespace for nginx
+resource "kubernetes_namespace" "nginx" {
+  metadata {
+    name = var.nginx_namespace
+  }
+}
+
 # Filter out local zones, which are not currently supported 
 # with managed node groups
 data "aws_availability_zones" "available" {
@@ -25,7 +39,7 @@ data "aws_availability_zones" "available" {
 }
 
 locals {
-  cluster_name = "xyzpoc-eks"
+  cluster_name = var.eks_cluster_name
 }
 
 resource "random_string" "suffix" {
@@ -37,7 +51,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.0.0"
 
-  name = "xyzpoc-vpc"
+  name = var.vpc_name
 
   cidr = "10.0.0.0/16"
   azs  = slice(data.aws_availability_zones.available.names, 0, 3)
