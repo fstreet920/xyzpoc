@@ -28,3 +28,7 @@ curl http://{ingress-ip}/test
 ### swagger:
 http://127.0.0.1:5000/apidocs
 
+
+# Terraform
+based on https://developer.hashicorp.com/terraform/tutorials/kubernetes/eks
+
