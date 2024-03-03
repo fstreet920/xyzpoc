@@ -6,6 +6,7 @@ POC for deploying sample application to the cloud in a Kubernetes environment.
 * terraform installed
 * aws user with correct privileges
 * helm installed
+* kubectl installed
 
 # App
 ## terminal testing:
@@ -43,3 +44,7 @@ aws eks --region us-west-2 update-kubeconfig --name xyzpoc-eks
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace
 
+# scripts
+if crlf added to shebang line -- /bin/bash^M: bad interpreter: No such file or directory
+remove with - sed
+sed -i -e 's/\r$//' helm_deploys.sh
