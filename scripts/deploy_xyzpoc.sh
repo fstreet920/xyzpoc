@@ -1,4 +1,5 @@
 #!/bin/bash
+# Deploys xyzpoc to AWS.  Creates and eks cluster, deploys nginx and xyzpoc, and tests the endpoint for a valid return.
 
 echo "Deploying xyzpoc"
 echo -e "Creating Cluster\n\n\n"
@@ -12,12 +13,12 @@ echo -e "\nPerforming Helm installs/updates\n\n"
 pod_status=$(kubectl get pod -l app=xyzpoc -n xyzpoc -o jsonpath='{.items[0].status.phase}')
 
 # Check xyzpoc pod is running
-if [[ -n "$pod_status" ]]; then
+if [ "$pod_status" == "Running" ]; then
   echo -e "\n\nxyzpoc Pod running\n\n"
   echo Testing Endpoint
   ./test_endpoint.sh "$curr_context"
 else
-  echo "\n\nFAILURE: xyzpoc Pod not running, Current status: $pod_status"
+  echo "\n\nDEPLOYMENT FAILURE: xyzpoc Pod not running, Current status: $pod_status"
 fi
 
 

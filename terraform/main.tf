@@ -42,11 +42,6 @@ locals {
   cluster_name = var.eks_cluster_name
 }
 
-resource "random_string" "suffix" {
-  length  = 8
-  special = false
-}
-
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.0.0"
@@ -97,31 +92,18 @@ module "eks" {
 
   }
 
-  # two node groups one with a large ec2 for istio resources and one with smaller 
+  # one node group an m5.large ec2
   eks_managed_node_groups = {
     one = {
       name = "node-group-1"
 
-      instance_types = ["m5.xlarge"]
+      instance_types = ["m5.large"]
 
       min_size     = 1
       max_size     = 1
       desired_size = 1
     }
-
-    two = {
-      name = "node-group-2"
-
-      instance_types = ["m5.xlarge"]
-
-      min_size     = 1
-      max_size     = 1
-      desired_size = 1
-    }        
   }
   
   aws_auth_users = var.aws_auth_users_list
-
-  aws_auth_accounts = var.aws_auth_accounts_list
-
 }
