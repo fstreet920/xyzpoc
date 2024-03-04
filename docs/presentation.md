@@ -37,7 +37,7 @@ Deploy app with REST endpoint to the cloud in a kubernetes cluster. Ensure code 
 
 # Lessons Learned
 * Setting flask port through environment variable - LISTENING_PORT
-* Minikube has it's own nginx addon - usefull but didn't catch ingress definition errors
+* Minikube has its own nginx addon - useful but didn't catch ingress definition errors
 * bash scripting - make sure to update .gitattributes so crlf isn't added!
 * bash scripting - some refreshing of knowledge was required :-)
 * tagging image with git tag
