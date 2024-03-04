@@ -10,7 +10,7 @@ fi
 # switch context
 kubectl config use-context $1
 
-testing=1              # flag indicating testing endpoing
+testing=1              # flag indicating testing endpoint
 current_retry_count=0  # current number of retries
 max_retries=60         # max retries
 retry_delay=5          # retry delay in seconds
