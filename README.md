@@ -96,13 +96,16 @@ image: docker.io/streetplaya/xyzpoc:v0.0.2
 # Changes to the POC for 'Production'
 * Define least privileges required for AWS user to allow setting up EKS cluster with terraform and for interacting with cluster through kubectl and EKS console.
 * Use Route53 and ACM to use https instead of http. (cert manager, external dns)
-* Fix tagging to only publish Docker image with tag if on main branch
+* Add unit tests for probe endpoints
+* Add terraform plan with approval and then have terraform apply execute that plan
 * Right size the cluster
 * Add CD like FluxCD or ArgoCD
 * Add node autoscaling
 * Add pod autoscaling (HPA)
 * Add container scanning for vulnerabilities
 * Add powershell scripts for Windows support
+* Move terraform to github actions
+* Package helm chart and save in registry
 
 # [Presentation](docs/presentation.md)
 

@@ -40,18 +40,22 @@ Deploy app with REST endpoint to the cloud in a kubernetes cluster. Ensure code 
 * Minikube has its own nginx addon - useful but didn't catch ingress definition errors
 * bash scripting - make sure to update .gitattributes so crlf isn't added!
 * bash scripting - some refreshing of knowledge was required :-)
-* tagging image with git tag
+* tagging image with git tag, making sure only executes on main branch
 * Docker Access Tokens
 * Spent some time looking at awk for kubectl environment, then started using jsonpath.
+* Terraform plan, saving the plan file and then using that with the apply command.
 
 # Changes to the POC for 'Production'
 * Define least privileges required for AWS user to allow setting up EKS cluster with terraform and for interacting with cluster through kubectl and EKS console.
 * Use Route53 and ACM to use https instead of http. (cert manager, external dns)
-* Fix tagging to only publish Docker image with tag if on main branch
+* Add unit tests for probe endpoints
+* Add terraform plan with approval and then have terraform apply execute that plan
 * Right size the cluster
 * Add CD like FluxCD or ArgoCD
 * Add node autoscaling
 * Add pod autoscaling (HPA)
 * Add container scanning for vulnerabilities
 * Add powershell scripts for Windows support
+* Move terraform to github actions
+* Package helm chart and save in registry
 
